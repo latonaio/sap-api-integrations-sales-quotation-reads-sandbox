@@ -1,0 +1,7 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-quotation-reads/SAP_API_Caller/caller.go#L156",
+	"function": "sap-api-integrations-sales-quotation-reads/SAP_API_Caller.(*SAPAPICaller).Item",
+	"level": "INFO",
+	"message": "[{SalesQuotation:20000000 SalesQuotationItem:10 SalesQuotationItemCategory:AGN SalesQuotationItemText:Headlight PurchaseOrderByCustomer: Material:MZ-TG-A10 MaterialByCustomer: RequestedQuantity:5 RequestedQuantityUnit:PC ItemOrderProbabilityInPercent:70 ItemGrossWeight:5.000 ItemNetWeight:4.500 ItemWeightUnit:G ItemVolume:0.000 ItemVolumeUnit: TransactionCurrency:USD NetAmount:87.75 MaterialGroup:L001 MaterialPricingGroup: Batch: Plant:1710 IncotermsClassification:EXW CustomerPaymentTerms:0004 ProductTaxClassification1:0 SalesDocumentRjcnReason: WBSElement: ProfitCenter:Z_LOG_PC11 ReferenceSDDocument: ReferenceSDDocumentItem:0 SDProcessStatus:A ToItemPricingElement:https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_QUOTATION_SRV/A_SalesQuotationItem(SalesQuotation='20000000',SalesQuotationItem='10')/to_PricingElement}]",
+	"time": "2021-12-15T18:46:42.720326+09:00"
+}

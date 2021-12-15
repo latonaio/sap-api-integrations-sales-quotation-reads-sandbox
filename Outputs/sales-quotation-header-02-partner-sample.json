@@ -1,0 +1,7 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-quotation-reads/SAP_API_Caller/caller.go#L57",
+	"function": "sap-api-integrations-sales-quotation-reads/SAP_API_Caller.(*SAPAPICaller).Header",
+	"level": "INFO",
+	"message": "[{SalesQuotation:20000000 PartnerFunction:SH Customer:USCU-CUS01 Supplier:} {SalesQuotation:20000000 PartnerFunction:SP Customer:USCU-CUS01 Supplier:} {SalesQuotation:20000000 PartnerFunction:PY Customer:USCU-CUS01 Supplier:} {SalesQuotation:20000000 PartnerFunction:BP Customer:USCU-CUS01 Supplier:}]",
+	"time": "2021-12-15T17:34:26.426219+09:00"
+}
