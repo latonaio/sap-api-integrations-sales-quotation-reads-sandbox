@@ -28,7 +28,6 @@ type ToItemPricingElement struct {
 			TaxCode                        string `json:"TaxCode"`
 			ConditionAmount                string `json:"ConditionAmount"`
 			TransactionCurrency            string `json:"TransactionCurrency"`
-			ConditionClass                 string `json:"ConditionClass"`
 			PricingScaleBasis              string `json:"PricingScaleBasis"`
 			ConditionScaleBasisValue       string `json:"ConditionScaleBasisValue"`
 			ConditionScaleBasisUnit        string `json:"ConditionScaleBasisUnit"`

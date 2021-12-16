@@ -248,7 +248,6 @@ func ConvertToToItemPricingElement(raw []byte, l *logger.Logger) ([]ToItemPricin
 	TaxCode:                        data.TaxCode,
 	ConditionAmount:                data.ConditionAmount,
 	TransactionCurrency:            data.TransactionCurrency,
-	ConditionClass:                 data.ConditionClass,
 	PricingScaleBasis:              data.PricingScaleBasis,
 	ConditionScaleBasisValue:       data.ConditionScaleBasisValue,
 	ConditionScaleBasisUnit:        data.ConditionScaleBasisUnit,
