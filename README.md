@@ -38,3 +38,62 @@ sap-api-integrations-sales-quotation-reads において、API への値入力条
 
 * inoutSDC.SalesQuotation.SalesQuotation（販売見積番号）
 * inoutSDC.SalesQuotation.SalesQuotationItem.SalesQuotationItem（販売見積明細）
+
+## SAP API Bussiness Hub の API の選択的コール
+
+Latona および AION の SAP 関連リソースでは、Inputs フォルダ下の sample.json の accepter に取得したいデータの種別（＝APIの種別）を入力し、指定することができます。  
+なお、同 accepter にAll(もしくは空白)の値を入力することで、全データ（＝全APIの種別）をまとめて取得することができます。  
+
+* sample.jsonの記載例(1)  
+
+accepter において 下記の例のように、データの種別（＝APIの種別）を指定します。  
+ここでは、"Header" が指定されています。    
+  
+```
+	"api_schema": "sap.s4.beh.product.v1.Product.Created.v1",
+	"accepter": ["Header"],
+	"material_code": "20000000",
+	"deleted": false
+```
+  
+* 全データを取得する際のsample.jsonの記載例(2)  
+
+全データを取得する場合、sample.json は以下のように記載します。  
+
+```
+	"api_schema": "sap.s4.beh.product.v1.Product.Created.v1",
+	"accepter": ["All"],
+	"material_code": "20000000",
+	"deleted": false
+```
+## 指定されたデータ種別のコール
+
+accepter における データ種別 の指定に基づいて SAP_API_Caller 内の caller.go で API がコールされます。  
+caller.go の func() 毎 の 以下の箇所が、指定された API をコールするソースコードです。  
+
+```
+func (c *SAPAPICaller) AsyncGetSalesQuotation(salesQuotation, salesQuotationItem string, accepter []string) {
+	wg := &sync.WaitGroup{}
+	wg.Add(len(accepter))
+	for _, fn := range accepter {
+		switch fn {
+		case "Header":
+			func() {
+				c.Header(salesQuotation)
+				wg.Done()
+			}()
+		case "Item":
+			func() {
+				c.Item(salesQuotation, salesQuotationItem)
+				wg.Done()
+			}()
+		default:
+			wg.Done()
+		}
+	}
+
+	wg.Wait()
+}
+```
+
+

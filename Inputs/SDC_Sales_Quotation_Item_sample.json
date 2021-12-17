@@ -131,7 +131,8 @@
 			}
 		}
 	},
-	"api_schema": "sap.s4.beh.salesquotation.v1.SalesQuotation.Created.v1",
-	"sales_quotation": "20000000",
+	"api_schema": "sap.s4.beh.product.v1.Product.Created.v1",
+	"accepter": ["All"],
+	"material_code": "20000000",
 	"deleted": false
 }

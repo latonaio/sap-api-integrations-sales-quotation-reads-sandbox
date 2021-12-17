@@ -26,18 +26,26 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-func (c *SAPAPICaller) AsyncGetSalesQuotation(salesQuotation, salesQuotationItem string) {
+func (c *SAPAPICaller) AsyncGetSalesQuotation(salesQuotation, salesQuotationItem string, accepter []string) {
 	wg := &sync.WaitGroup{}
+	wg.Add(len(accepter))
+	for _, fn := range accepter {
+		switch fn {
+		case "Header":
+			func() {
+				c.Header(salesQuotation)
+				wg.Done()
+			}()
+		case "Item":
+			func() {
+				c.Item(salesQuotation, salesQuotationItem)
+				wg.Done()
+			}()
+		default:
+			wg.Done()
+		}
+	}
 
-	wg.Add(2)
-	func() {
-		c.Header(salesQuotation)
-		wg.Done()
-	}()
-	func() {
-		c.Item(salesQuotation, salesQuotationItem)
-		wg.Done()
-	}()
 	wg.Wait()
 }
 
@@ -62,7 +70,7 @@ func (c *SAPAPICaller) Header(salesQuotation string) {
 		return
 	}
 	c.log.Info(itemData)
-	
+
 	itemPricingElementData, err := c.callToItemPricingElement(itemData[0].ToItemPricingElement)
 	if err != nil {
 		c.log.Error(err)
